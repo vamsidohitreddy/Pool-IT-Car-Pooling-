@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/handling.css">
+    <title>PooL IT</title>
+</head>
+<body>
+    <nav>
+        <nav id="desktop-nav">
+            <div class="logo">PooL IT</div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#giveatrip">Give a trip</a></li>
+                    <%if(!user) {%>
+                    <li><a href="./login">Login</a></li>
+                    <li><a href="./signup">SignUP</a></li>
+                    <% }else {%>
+                        <h1 style="background-color: white;">Hello <%= user.username %></h1>
+                        <form action="/logout" method="post">
+                            <button type="submit" class="btn_web">Logout</button>
+                          </form>
+                    <% }%>
+                </ul>
+            </div>
+        </nav>
+
+        <nav id="hamburger-nav">
+            <div class="logo">PooL IT</div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#giveatrip" onclick="toggleMenu()">Give a trip</a></li>
+                    <li><a href="#takeatrip" onclick="toggleMenu()">Take a trip</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </div>
+            </div>
+        </nav>
+    </nav>
+
+    <section id="page1"> 
+        <div class="content">
+            <h1>Pool IT</h1>
+            <h1>Pool IT</h1>
+        </div>
+    </section>
+    <section id="giveatrip">
+        <div class="section_text">
+            <h3>Post a Ride</h3>
+            <p>Carpooling is the shared use of cars by persons with similar travel needs (i.e. origin and destination are the same or compatible).</p>
+            <a href="/uploadride"><button class="btn_web">Publish a Ride</button></a>
+        </div>
+    </section>
+    <section id="takeatrip">
+        <div class="section_text">
+            <h3>Take a Ride</h3>
+            <p>Carpooling is the shared use of cars by persons with similar travel needs (i.e. origin and destination are the same or compatible).</p>
+            <a href="/searchride"><button class="btn_web">Search a Ride</button></a>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="section_text">
+            <p>Get in Touch</p>
+            <h3>Contact Us</h3>
+            <div class="contact-info-upper-container">
+                <div class="contact-info-container">
+                  
+                  <p><a href="mailto:exampleemail@gmail.com">Example@gmail.com</a></p>
+                </div>
+                <div class="contact-info-container">
+                  
+                  <p><a href="https://linkedin.com">Linkedin</a></p>
+                </div>
+              </div>
+        </div>
+    </section>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+              <ul class="nav-links">
+                <li><a href="#page1">About</a></li>
+                <li><a href="#giveatrip">Give a trip</a></li>
+                <li><a href="#takeatrip">Take a trip</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        <p>Copyright &#169; 2023 PooL IT. All Rights Reserved.</p>
+      </footer>
+    <script>
+        function toggleMenu(){
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+    </script>
+</body>
+</html>

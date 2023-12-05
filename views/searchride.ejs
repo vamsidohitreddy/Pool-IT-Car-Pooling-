@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/uploadride.css">
+    <title>SEARCH RIDE</title>
+</head>
+
+<body>
+  <%if(!user) {%>
+    <h2>Please sign up or login before uploading ride</h2>
+    <li><a href="./login">Login</a></li>
+    <li><a href="./signup">SignUP</a></li>
+    <% }else {%>
+        <h1 style="background-color: white;">Hello <%= user.username %></h1>
+        <form action="/logout" method="post">
+            <button type="submit" class="btn_web">Logout</button>
+          </form>
+    <% }%>
+    <div class="container">
+        <h1 class="form-title">Search Ride</h1>
+        <form action="/searchride" method="post">
+            <div class="main-user-info">
+              <div class="user-input-box">
+                <label for="arrival">Arrival</label>
+                <input type="text"
+                        id="arrival"
+                        name="arrival"
+                        placeholder="Enter Arrival"/>
+              </div>
+              <div class="user-input-box">
+                <label for="destination">Destination</label>
+                <input type="text"
+                        id="destination"
+                        name="destination"
+                        placeholder="Enter Destination"/>
+              </div>
+              <div class="user-input-box">
+                <label for="date">Date</label>
+                <input type="date"
+                        id="date"
+                        name="date"
+                        placeholder="Enter Date"/>
+              </div>
+            </div>
+            <div class="form-submit-btn">
+              <input type="submit" value="Search" onclick="message()">
+              <a href="/">Back</a>
+            </div>
+            <br>
+            <table border="1">
+              <h3>Available Rides:</h3>
+              <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+              </tr>
+              <% if(data!=false) {%>
+              <%  for(var i = 0; i < data.length; i++) {%>
+                <tr>
+                  <td width="200"><%= data[i].fullname %></td>
+                  <td width="300"><%= data[i].phonenumber %></td>
+                </tr>
+              <% }; }%>
+            </table>
+          </form>
+    </div>
+</body>
+</html>
