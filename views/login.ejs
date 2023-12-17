@@ -17,6 +17,7 @@
           <br>
           <button type="submit">Login</button>
         </form> -->
+        
         <div class="container">
           <h1 class="form-title">Login</h1>
           <form action="/login" method="post">
@@ -39,13 +40,18 @@
             <div class="form-submit-btn">
               <input type="submit" value="Login">
               <a href="/">Back</a>
+              <br>
             </div>
+            <% if (errorMessage) { %>
+              <p style="color: red;"><%= errorMessage %></p>
+            <% } %>
           </form>
         </div>
       <% } else { %>
         <h1>Hello <%= user.username %></h1>
         <form action="/logout" method="post">
           <button type="submit">Logout</button>
+          <a href="/">Back</a>
         </form>
       <% } %>
 

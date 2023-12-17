@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/handling.css">
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script> 
+    <script src="https://mediafiles.botpress.cloud/a1836f4c-abb8-4ed5-ba5e-d7fa92949168/webchat/config.js" defer></script>
     <title>PooL IT</title>
 </head>
 <body>
     <nav>
         <nav id="desktop-nav">
             <div class="logo">PooL IT</div>
+            <!--<img src="/img/racing-car.png" alt="car pic" class="active"> -->
             <div>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#giveatrip">Give a trip</a></li>
+                    <li><a href="#takeatrip">Upload a ride</a></li>
                     <%if(!user) {%>
                     <li><a href="./login">Login</a></li>
-                    <li><a href="./signup">SignUP</a></li>
+                    <li><a href="signup">SignUP</a></li>
                     <% }else {%>
-                        <h1 style="background-color: white;">Hello <%= user.username %></h1>
+                        <h1 style="color:white">Hello <%= user.name %></h1>
                         <form action="/logout" method="post">
                             <button type="submit" class="btn_web">Logout</button>
                           </form>
@@ -40,6 +44,15 @@
                     <li><a href="#about" onclick="toggleMenu()">About</a></li>
                     <li><a href="#giveatrip" onclick="toggleMenu()">Give a trip</a></li>
                     <li><a href="#takeatrip" onclick="toggleMenu()">Take a trip</a></li>
+                    <%if(!user) {%>
+                        <li><a href="./login">Login</a></li>
+                        <li><a href="signup">SignUP</a></li>
+                    <% }else {%>
+                            <h1 style="background-color: white;">Hello <%= user.username %></h1>
+                            <form action="/logout" method="post">
+                                <button type="submit" class="btn_web">Logout</button>
+                              </form>
+                    <% }%>
                     <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 </div>
             </div>
@@ -47,24 +60,59 @@
     </nav>
 
     <section id="page1"> 
-        <div class="content">
+        <!--<div class="content">
             <h1>Pool IT</h1>
             <h1>Pool IT</h1>
+        </div> -->
+        <div class="section__text">
+            <h3 class="title">Make Travelling Easy</h3>
+            <p>No matter where you're going, by bus or carpool, find the perfect ride from our wide range of destinations and routes at low prices. We take the time to get to know each of our members and bus partners. We check reviews, profiles and IDs, so you know who you’re travelling with and can book your ride at ease on our secure platform. </p>
         </div>
     </section>
     <section id="giveatrip">
         <div class="section_text">
-            <h3>Post a Ride</h3>
-            <p>Carpooling is the shared use of cars by persons with similar travel needs (i.e. origin and destination are the same or compatible).</p>
-            <a href="/uploadride"><button class="btn_web">Publish a Ride</button></a>
+            <div class="search-upload-container">
+                <h3>Driving in your car soon?</h3>
+                <br>
+                <p>Whether you are the owner or a passenger, being part of a carpool will save you money. Instead of everyone paying for their own tank of gas, you can split the total amongst the group. A good way to determine how much each person should pay is to work out how much gas is used to drive to and from work each week. If the total distance equals one tank of gas, divide the cost of a tank by the people in the car.</p>
+                <br>
+                <a href="/uploadride"><button class="btn_web">Offer a Ride</button></a>
+            </div>
         </div>
     </section>
     <section id="takeatrip">
         <div class="section_text">
-            <h3>Take a Ride</h3>
-            <p>Carpooling is the shared use of cars by persons with similar travel needs (i.e. origin and destination are the same or compatible).</p>
-            <a href="/searchride"><button class="btn_web">Search a Ride</button></a>
+            <div class="search-upload-container">
+                <h3>Need a Ride?</h3>
+                <p>Getting bored of travelling in heavy trains and buses. We have a solution for you.You can see available people who are travelling on the same direction. It is a great way to reduce stress. Both public and private sectors can reduce the need for parking and associated capital expenses by driving less. Parking areas consume significant space, which could be allocated for alternative purposes, such as infrastructure development, thereby saving on fuel and maintenance costs. </p>
+                <a href="/searchride"><button class="btn_web">Search a Ride</button></a>
+            </div>
         </div>
+    </section>
+    <section id="about">
+        <h1>About Us</h1>
+        <br>
+        <div class="about-para">
+            <img src="/img/about.jpg">
+            <div class="aboutpara-p">
+                <p>Movement is what we power. It’s our lifeblood. It runs through our veins. It’s what gets us out of bed each morning. It pushes us to constantly reimagine how we can move better. For you. For all the places you want to go. For all the things you want to get. 
+                    For all the ways you want to earn. Across the entire world. In real time. At the incredible speed of now. PooLIT leverages technology to fill empty seats on the road, connecting members looking to carpool or to travel by bus, and making travel more affordable, sociable and convenient. PoolIT's environmentally and human-friendly mobility network saves more tons of CO2 and enables human connections every year.</p>
+            </div>
+        </div>
+        <div class="about-containers">
+            <div class="details-container">
+              <h2>Ride Beyound</h2>
+              <p>In addition to helping others find a way to go from point A to point B, we're helping people creating new freight-booking solutions, and helping people providing a seamless travelling experience.</p>
+            </div>
+            <div class="details-container">
+              <h2>Trust who you travel with</h2>
+              <p>We take the time to get to know each of our members and bus partners. We check reviews, profiles and IDs, so you know who you’re travelling with and can book your ride at ease on our secure platform.</p>
+            </div>
+            <div class="details-container">
+                <h2>Pick rides at low prices</h2>
+                <p>No matter where you’re going, by bus or carpool, find the perfect ride from our wide range of destinations and routes at low prices.</p>
+            </div>
+          </div>
     </section>
     <section id="contact">
         <div class="section_text">
@@ -72,28 +120,26 @@
             <h3>Contact Us</h3>
             <div class="contact-info-upper-container">
                 <div class="contact-info-container">
-                  
-                  <p><a href="mailto:exampleemail@gmail.com">Example@gmail.com</a></p>
+                  <p><a href="mailto:exampleemail@gmail.com" class="links">Example@gmail.com</a></p>
                 </div>
                 <div class="contact-info-container">
-                  
-                  <p><a href="https://linkedin.com">Linkedin</a></p>
+                  <p><a href="https://linkedin.com" class="links">Linkedin</a></p>
                 </div>
               </div>
         </div>
     </section>
     <footer>
         <nav>
-            <div class="nav-links-container">
+            <div class="footer-nav">
               <ul class="nav-links">
-                <li><a href="#page1">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#giveatrip">Give a trip</a></li>
                 <li><a href="#takeatrip">Take a trip</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
           </nav>
-        <p>Copyright &#169; 2023 PooL IT. All Rights Reserved.</p>
+        <p class="footer-p">Copyright &#169; 2023 PooL IT. All Rights Reserved.</p>
       </footer>
     <script>
         function toggleMenu(){

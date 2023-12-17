@@ -23,6 +23,13 @@
           <form action="/signup" method="post">
             <div class="main-user-info">
               <div class="user-input-box">
+                <label for="signup-password">Name:</label>
+                <input type="name"
+                        id="signup-password"
+                        name="name"
+                        placeholder="Enter Name"/ required>
+              </div>
+              <div class="user-input-box">
                 <label for="signup-username">Email:</label>
                 <input type="text"
                         id="signup-username"
@@ -37,16 +44,22 @@
                         placeholder="Enter Password"/ required>
               </div>
             </div>
+            
             <div class="form-submit-btn">
               <input type="submit" value="Signup">
               <a href="/">Back</a>
+              <br>
             </div>
+            <% if (errorMessage) { %>
+              <p style="color: red;"><%= errorMessage %></p>
+            <% } %>
           </form>
         </div>
       <% } else { %>
         <h1>Hello <%= user.username %></h1>
         <form action="/logout" method="post">
           <button type="submit">Logout</button>
+          <a href="/">Back</a>
         </form>
       <% } %>
     

@@ -9,16 +9,21 @@
 </head>
 
 <body>
-  <%if(!user) {%>
-    <h2>Please sign up or login before uploading ride</h2>
-    <li><a href="./login">Login</a></li>
-    <li><a href="./signup">SignUP</a></li>
-    <% }else {%>
-        <h1 style="background-color: white;">Hello <%= user.username %></h1>
-        <form action="/logout" method="post">
-            <button type="submit" class="btn_web">Logout</button>
-          </form>
-    <% }%>
+  <div class="user-info">
+    <%if(!user) {%>
+      <h2>Please sign up or login before uploading ride</h2>
+      <div class="special-btn">
+        <a href="./login">Login</a>
+        <a href="./signup">SignUP</a>
+      </div>
+      <% }else {%>
+          <h1 style="background-color: white;">Hello <%= user.name %></h1>
+          <br>
+          <form action="/logout" method="post">
+              <button type="submit" class="btn_web">Logout</button>
+            </form>
+      <% }%>
+  </div>
     <div class="container">
         <h1 class="form-title">Upload Ride</h1>
         <form action="/uploadride" method="post">

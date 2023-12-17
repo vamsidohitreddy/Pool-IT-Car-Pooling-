@@ -9,16 +9,21 @@
 </head>
 
 <body>
-  <%if(!user) {%>
-    <h2>Please sign up or login before uploading ride</h2>
-    <li><a href="./login">Login</a></li>
-    <li><a href="./signup">SignUP</a></li>
-    <% }else {%>
-        <h1 style="background-color: white;">Hello <%= user.username %></h1>
-        <form action="/logout" method="post">
-            <button type="submit" class="btn_web">Logout</button>
-          </form>
-    <% }%>
+  <div class="user-info">
+    <%if(!user) {%>
+      <h2>Please sign up or login before uploading ride</h2>
+      <div class="special-btn">
+        <a href="./login">Login</a>
+        <a href="./signup">SignUP</a>
+      </div>
+      <% }else {%>
+          <h1 style="background-color: white;">Hello <%= user.name %></h1>
+          <br>
+          <form action="/logout" method="post">
+              <button type="submit" class="btn_web">Logout</button>
+            </form>
+      <% }%>
+  </div>
     <div class="container">
         <h1 class="form-title">Search Ride</h1>
         <form action="/searchride" method="post">
@@ -50,8 +55,8 @@
               <a href="/">Back</a>
             </div>
             <br>
-            <table border="1">
-              <h3>Available Rides:</h3>
+            <h3>Available Rides:</h3>
+            <table id="customers">
               <tr>
                 <th>Name</th>
                 <th>Phone Number</th>
@@ -59,7 +64,7 @@
               <% if(data!=false) {%>
               <%  for(var i = 0; i < data.length; i++) {%>
                 <tr>
-                  <td width="200"><%= data[i].fullname %></td>
+                  <td width="300"><%= data[i].fullname %></td>
                   <td width="300"><%= data[i].phonenumber %></td>
                 </tr>
               <% }; }%>

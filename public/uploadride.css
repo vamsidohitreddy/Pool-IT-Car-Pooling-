@@ -5,6 +5,7 @@
     font-family: sans-serif;
 }
 
+
 body{
     display: flex;
     height: 100vh;
@@ -14,12 +15,23 @@ body{
     background-size: cover;
 }
 
+.user-info{
+    padding: 1rem ;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(53,53,53) 0.1rem solid;
+    border-color: rgb(163,163,163);
+    text-align: center;
+    width: 100%;
+}
+
 .container{
     width: 100%;
     max-width: 650px;
     background-color: white;
-    padding: 28px;
-    margin: 0 28px;
+    padding: 40px;
+    margin: 0 60px;
     border-radius: 10px;
 }
 
@@ -115,9 +127,6 @@ body{
     cursor: pointer;
 }
 
-.form-submit-btn{
-    margin-top: 40px;
-}
 
 .form-submit-btn a{
     display: block;
@@ -209,4 +218,53 @@ body{
     transition: all 0.5s ease;
     background-color: grey;
     color: black;
+  }
+
+.special-btn{
+    margin-top: 20px;
+}
+
+.special-btn a{
+    color: white;
+    padding: 1px 2px;
+    background: black;
+    transition: all 0.2s ease;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 2rem;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+.special-btn a:active{
+    transform:scale(0.96);
+  }
+  .special-btn a:hover{
+    transition: all 0.5s ease;
+    background-color: grey;
+    color: white;
+  }
+
+/*TABLE */
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
   }
