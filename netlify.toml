@@ -1,0 +1,8 @@
+
+[[redirects]]
+from= "/*"
+to = "/main.ejs"
+status = 200
+
+
+
