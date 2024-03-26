@@ -58,56 +58,12 @@ app.get('/', (req,res) =>{
     res.render("main");
 });
 
-app.get('/uploadride',(req,res) =>{
-    //res.render("uploadride.ejs");
-    res.render('uploadride.ejs', { successMessage: null });
-});
 
-app.get('/searchride',(req,res)=>{
-    res.render("searchride.ejs",{ data: false });
-});
 
 app.get('/signup',(req,res)=>{
   res.render("signup.ejs",{ errorMessage: null });
 });
 
-app.post('/uploadride', async(req,res) =>{
-    let fullname = req.body.fullName;
-    let phonenumber = req.body.phoneNumber;
-    let arrival = req.body.arrival;
-    let destination = req.body.destination;
-    let date = req.body.date;
-    let email = req.body.email;
-    //const success = document.getElementById('success');
-    try{
-        await db.query("insert into rides (fullname,phonenumber,arrival,destination,date,email) values ($1,$2,$3,$4,$5,$6)",[fullname,phonenumber,arrival,destination,date,email]);
-        //success.style.display = 'block'
-        //res.render("app.ejs",success.style.display = 'block');
-        // res.send('<h1 style:"color: green, ">Form submitted successfully!</h1>');
-        res.render('uploadride.ejs', { successMessage: 'Submitted successfully..!' });
-    }
-   catch(err){
-    res.render('uploadride.ejs', { successMessage: 'Error occured please check all try one again' });
-    console.log(err);
-   }
-});
-
-app.post('/searchride', async(req,res) =>{
-    let arrival = req.body.arrival;
-    let destination = req.body.destination;
-    let date = req.body.date;
-    try {
-        const result = await db.query(
-          'SELECT fullname,phonenumber FROM rides WHERE arrival = $1 AND destination = $2 AND date = $3',
-          [arrival, destination,date]
-        );
-    
-        res.render('searchride', { data: result.rows });
-      } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-      }
-});
 
 
 app.get('/login', async(req,res) =>{
